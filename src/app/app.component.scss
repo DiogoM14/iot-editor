@@ -1,0 +1,22 @@
+:host {
+    display: grid;
+    grid-template-columns: 80px 3fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        'header header'
+        'aside main';
+    max-width: 1920px;
+    height: 100vh;
+}
+
+iot-app-header {
+    grid-area: header;
+}
+
+iot-app-side-nav {
+    grid-area: aside;
+}
+
+main {
+    grid-area: main;
+}
