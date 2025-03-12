@@ -1,11 +1,11 @@
 <nav class="flex flex-col items-center py-4">
-  <ul class="menu gap-3 rounded-box">
-    @for (navItem of sideNavItems; track navItem.label) {
-      <li>
-        <a class="tooltip tooltip-right" data-tip="Dashboard">
-          <span class="material-icons">{{ navItem.icon }}</span>
-        </a>
-      </li>
-    }
-  </ul>
+    <ul class="menu gap-3 rounded-box">
+        @for (navItem of sideNavItems; track navItem.label) {
+            <li>
+                <a class="tooltip tooltip-right" [attr.data-tip]="navItem.label">
+                    <span class="material-icons">{{ navItem.icon }}</span>
+                </a>
+            </li>
+        }
+    </ul>
 </nav>
