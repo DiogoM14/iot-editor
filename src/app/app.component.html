@@ -1,11 +1,13 @@
 @if (isUserAuthenticated) {
-    <div class="grid grid-cols-[80px_3fr] grid-rows-[auto_1fr] h-screen max-w-[1920px]">
+    <div class="grid grid-cols-[80px_3fr] grid-rows-[auto_1fr] h-screen">
         <iot-app-header class="col-span-2" />
         <iot-app-side-nav />
         <main class="p-7 bg-base-200">
-            <router-outlet />
+            <div class="max-w-[1920px]">
+                <router-outlet />
+            </div>
         </main>
     </div>
 } @else {
-    <iot-login />
+    <router-outlet />
 }

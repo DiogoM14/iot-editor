@@ -1,5 +1,5 @@
-<nav class="flex flex-col items-center py-4">
-    <ul class="menu gap-3 rounded-box">
+<nav class="flex flex-col items-center py-4 h-full justify-between">
+    <ul class="menu gap-4 rounded-box">
         @for (navItem of sideNavItems; track navItem.label) {
             <li>
                 <a class="tooltip tooltip-right" [attr.data-tip]="navItem.label">
@@ -8,4 +8,9 @@
             </li>
         }
     </ul>
+    <label class="swap swap-rotate my-3">
+        <input type="checkbox" (change)="toggleTheme($event.target)" />
+        <span class="swap-off material-icons">light_mode</span>
+        <span class="swap-on material-icons">dark_mode</span>
+    </label>
 </nav>
