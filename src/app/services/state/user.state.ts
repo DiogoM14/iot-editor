@@ -1,23 +1,12 @@
-import { UserState } from '../../models/user.model';
+import { UserModel } from '../../models';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { UserHttpService } from '../http';
 import { mapUsersDTOToUsersModel } from '../mappers';
+import { GenericState, GenericStateManagerService } from './generic-state-manager';
 
 @Injectable()
-export class UserStateService {
-    private initialUserState: UserState = {
-        data: null,
-        error: null,
-        loading: false,
-    };
-
-    private userState = new BehaviorSubject<UserState>(this.initialUserState);
-    private userHttpService = inject(UserHttpService);
-
-    public getUsersState(): Observable<UserState> {
-        return this.userState.asObservable();
-    }
+export class UserStateService extends GenericStateManagerService<UserModel> {
+     private userHttpService = inject(UserHttpService);
 
     public fetchUsers(): void {
         this.updateUsersState({ loading: true, error: null });
@@ -28,8 +17,8 @@ export class UserStateService {
         });
     }
 
-    private updateUsersState(newState: Partial<UserState>): void {
-        const currentState = this.userState.getValue();
-        this.userState.next({ ...currentState, ...newState });
+    private updateUsersState(newState: Partial<GenericState<UserModel>>): void {
+        const currentState = this.state.getValue();
+        this.state.next({ ...currentState, ...newState });
     }
 }

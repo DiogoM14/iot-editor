@@ -3,12 +3,13 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ROUTES } from '../../consts';
 import { environment } from '../../../environments/environment';
+import { CommonModule } from '@angular/common';
 
 @Component({
-    selector: 'iot-callback',
-    imports: [],
-    templateUrl: './callback.component.html',
-    styleUrl: './callback.component.scss',
+  selector: 'iot-callback',
+  imports: [CommonModule],
+  templateUrl: './callback.component.html',
+  styleUrl: './callback.component.scss',
 })
 export class CallbackComponent implements OnInit {
     private activatedRoute = inject(ActivatedRoute);
