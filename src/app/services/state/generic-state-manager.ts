@@ -14,7 +14,7 @@ export class GenericStateManagerService<T> {
     loading: false,
   };
 
-  protected state = new BehaviorSubject<GenericState<T>>(this.initialState);
+  public readonly state = new BehaviorSubject<GenericState<T>>(this.initialState);
 
   public getState(): Observable<GenericState<T>> {
     return this.state.asObservable();

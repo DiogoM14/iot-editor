@@ -6,7 +6,7 @@ import { GenericState, GenericStateManagerService } from './generic-state-manage
 
 @Injectable()
 export class UserStateService extends GenericStateManagerService<UserModel> {
-     private userHttpService = inject(UserHttpService);
+    private userHttpService = inject(UserHttpService);
 
     public fetchUsers(): void {
         this.updateUsersState({ loading: true, error: null });
