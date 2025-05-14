@@ -2,7 +2,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 export interface GenericState<T> {
-  data: T | T[] | null,
+  data: T | null,
   error: HttpErrorResponse | null;
   loading: boolean,
 }
