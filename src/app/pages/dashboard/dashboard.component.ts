@@ -2,10 +2,13 @@ import { Component, effect, inject, Signal } from '@angular/core';
 import { UserHttpService, UserStateService } from '../../services';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { UserState } from '../../models';
+import {JsonPipe} from '@angular/common';
 
 @Component({
     selector: 'iot-dashboard',
-    imports: [],
+  imports: [
+    JsonPipe
+  ],
     providers: [UserStateService, UserHttpService],
     templateUrl: './dashboard.component.html',
     styleUrl: './dashboard.component.scss',
@@ -22,13 +25,5 @@ export class DashboardComponent {
         effect(() => {
             this.userState.fetchUsers();
         });
-    }
-
-    public handleIncreaseNumber(selectedNumber: number): void {
-        this.selectedNumber = this.increaseNumber(selectedNumber);
-    }
-
-    public increaseNumber(value: number): number {
-        return value + 1;
     }
 }

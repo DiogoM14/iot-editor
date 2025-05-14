@@ -1,5 +1,5 @@
 <div class="flex flex-col gap-4 w-full">
-    {{ userData()?.data }}
-    <h1>{{ selectedNumber }}</h1>
-    <button (click)="handleIncreaseNumber(selectedNumber)">Increase</button>
+  @if (userData()) {
+    {{ userData() | json }}
+  }
 </div>
