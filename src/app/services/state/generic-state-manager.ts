@@ -19,4 +19,9 @@ export class GenericStateManagerService<T> {
   public getState(): Observable<GenericState<T>> {
     return this.state.asObservable();
   }
+
+  public updateState(newState: Partial<GenericState<T>>){
+    const currentState = this.state.getValue();
+    this.state.next({ ...currentState, ...newState });
+  }
 }

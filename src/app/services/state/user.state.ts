@@ -9,16 +9,11 @@ export class UserStateService extends GenericStateManagerService<UserModel> {
     private userHttpService = inject(UserHttpService);
 
     public fetchUsers(): void {
-        this.updateUsersState({ loading: true, error: null });
+        this.updateState({ loading: true, error: null });
         this.userHttpService.getUsers$().subscribe({
             next: users =>
-                this.updateUsersState({ data: mapUsersDTOToUsersModel(users), loading: false }),
-            error: error => this.updateUsersState({ error, loading: false }),
+                this.updateState({ data: mapUsersDTOToUsersModel(users), loading: false }),
+            error: error => this.updateState({ error, loading: false }),
         });
-    }
-
-    private updateUsersState(newState: Partial<GenericState<UserModel>>): void {
-        const currentState = this.state.getValue();
-        this.state.next({ ...currentState, ...newState });
     }
 }
